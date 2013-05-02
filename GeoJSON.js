@@ -59,6 +59,15 @@ var GeoJSON = function( geojson, options ){
 				}
 				break;
 				
+			case "Circle":
+				opts.center = new google.maps.LatLng(geojsonGeometry.coordinates[1], geojsonGeometry.coordinates[0]);
+				opts.radius = geojsonGeometry.radius;
+				googleObj = new google.maps.Circle(opts);
+				if (geojsonProperties) {
+					googleObj.set("geojsonProperties", geojsonProperties);
+				}
+				break;				
+				
 			case "Polygon":
 				var paths = [];
 				var exteriorDirection;
